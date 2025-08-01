@@ -5,6 +5,7 @@ require('dotenv').config();
 
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const customerRoutes = require('./routes/customerRoutes');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,8 +13,10 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+// ✅ Correctly mounted
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/customers', customerRoutes); 
 
 app.get('/', (req, res) => {
   res.json({ message: 'Welcome to the API' });
